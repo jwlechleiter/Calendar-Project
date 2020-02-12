@@ -1,0 +1,41 @@
+# Project: Calendar Project
+# Makefile created by Dev-C++ 5.4.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o openingScreen.o directory.o mainMenu.o calendarFunctions.o
+LINKOBJ  = main.o openingScreen.o directory.o mainMenu.o calendarFunctions.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+BIN      = "Calendar Project.exe"
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+openingScreen.o: openingScreen.c
+	$(CC) -c openingScreen.c -o openingScreen.o $(CFLAGS)
+
+directory.o: directory.c
+	$(CC) -c directory.c -o directory.o $(CFLAGS)
+
+mainMenu.o: mainMenu.c
+	$(CC) -c mainMenu.c -o mainMenu.o $(CFLAGS)
+
+calendarFunctions.o: calendarFunctions.c
+	$(CC) -c calendarFunctions.c -o calendarFunctions.o $(CFLAGS)
